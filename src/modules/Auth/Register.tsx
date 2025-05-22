@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Helmet } from "react-helmet";
@@ -18,6 +18,9 @@ function Register() {
     userName: "",
     confirmPassword: "",
   });
+  useEffect(() => {
+    //
+  }, []);
   const handleFormData = (event) => {
     const { value, name } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
