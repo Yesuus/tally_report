@@ -1,20 +1,12 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { updateToken } from "../store/storeSlice/projectSlice";
 import Sidebar from "./template/Sidebar";
 
 function Index() {
   const title = useSelector((state) => state.projectRedux.title);
-  const token = useSelector((state) => state.projectRedux.token);
-  const userRole = useSelector((state) => state.projectRedux.userRole);
+  const userRole = useSelector((state) => state.auth.userRole);
   const location = useLocation();
   const dispatch = useDispatch();
-  console.log("userRole", userRole);
-  const logout = () => {
-    // console.log("logout done");
-    localStorage.removeItem("token");
-    dispatch(updateToken(""));
-  };
   return (
     <div id="app">
       <Sidebar />

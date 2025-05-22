@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { updateToken, updateUserRole } from "../store/storeSlice/projectSlice";
+import { login, logout } from "../store/storeSlice/authSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Helmet } from "react-helmet";
 import apiCall from "../../utils/api";
@@ -28,9 +28,9 @@ function Login() {
       method: "GET",
     });
     const token = JSON.stringify(formData);
-    localStorage.setItem("token", "login done");
-    dispatch(updateToken(token));
-    dispatch(updateUserRole("admin"));
+    // localStorage.setItem("token", "login done");
+    dispatch(login({ user: "admin", token: "tokensssfs3434" }));
+    // dispatch(updateUserRole("admin"));
     navigate("/");
   };
   return (

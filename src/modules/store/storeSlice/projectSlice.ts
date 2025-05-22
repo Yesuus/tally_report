@@ -3,14 +3,10 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface tallyreportState {
     title: string,
-    token: string,
-    userRole: string,
 }
 
 const initialState: tallyreportState = {
     title: 'Tally-report',
-    token: '',
-    userRole: '',
 }
 
 export const tallySlice = createSlice({
@@ -20,13 +16,8 @@ export const tallySlice = createSlice({
         updateTitle:(state, action: PayloadAction<string>) => {
             state.title = action.payload
         },
-        updateToken:(state, action: PayloadAction<string>) => {
-            state.token = action.payload
-        },
-        updateUserRole:(state, action: PayloadAction<string>) => {
-            state.userRole = action.payload
-        },
+       
     }
 });
-export const {updateTitle, updateToken, updateUserRole} = tallySlice.actions;
+export const {updateTitle} = tallySlice.actions;
 export default tallySlice.reducer;

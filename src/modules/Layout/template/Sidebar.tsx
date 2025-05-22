@@ -1,22 +1,20 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { updateToken } from "../../store/storeSlice/projectSlice";
+import { logout } from "../../store/storeSlice/authSlice";
 
 function Sidebar() {
   const title = useSelector((state) => state.projectRedux.title);
   const token = useSelector((state) => state.projectRedux.token);
-  const userRole = useSelector((state) => state.projectRedux.userRole);
+  const userRole = useSelector((state) => state.auth.userRole);
   const location = useLocation();
   const dispatch = useDispatch();
-  console.log("userRole", userRole);
-  const logout = () => {
-    // console.log("logout done");
-    localStorage.removeItem("token");
-    dispatch(updateToken(""));
+  const signOut = () => {
+    console.log("signout");
+    dispatch(logout());
   };
   return (
     <>
-      {userRole != "" && (
+      {userRole != null && (
         <div id="sidebar" className="active">
           <div className="sidebar-wrapper active">
             <div className="sidebar-header">
@@ -391,6 +389,18 @@ function Sidebar() {
                   >
                     <i className="bi bi-cash"></i>
                     <span>Donate</span>
+                  </Link>
+                </li>
+                <li className="sidebar-item  ">
+                  <Link
+                    to="#"
+                    onClick={() => {
+                      signOut();
+                    }}
+                    className="sidebar-link"
+                  >
+                    <i className="bi bi-fullscreen-exit"></i>
+                    <span>Sign out</span>
                   </Link>
                 </li>
               </ul>

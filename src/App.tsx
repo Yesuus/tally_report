@@ -16,9 +16,9 @@ function RouteData({ userRole, token }: RouteDataProps) {
   const elements = useRoutes([
     {
       path: "/",
-      element: token != "" ? <Layout /> : "",
+      element: token != null ? <Layout /> : "",
       children: [
-        { path: "/", element: token != "" ? <Dashboard /> : <Login /> },
+        { path: "/", element: token != null ? <Dashboard /> : <Login /> },
         // { path: "/login", element: <Login /> },
         { path: "/registration", element: <Register /> },
       ],
@@ -32,8 +32,8 @@ function RouteData({ userRole, token }: RouteDataProps) {
 }
 function App() {
   const baseUrl = import.meta.env.VITE_BASE_URL;
-  const token = useSelector((state) => state.projectRedux.token);
-  const userRole = useSelector((state) => state.projectRedux.userRole);
+  const token = useSelector((state) => state.auth.token);
+  const userRole = useSelector((state) => state.auth.userRole);
   return (
     <Fragment>
       <Helmet>
