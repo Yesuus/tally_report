@@ -35,7 +35,7 @@ function App() {
   const userRole = useSelector((state) => state.auth.userRole);
   return (
     <Fragment>
-      {/* <Helmet>
+      <Helmet>
         <link rel="stylesheet" href={`${baseUrl}css/bootstrap.css`} />
         <link rel="stylesheet" href={`${baseUrl}css/bootstrap-icons.css`} />
         <link rel="stylesheet" href={`${baseUrl}css/bold.css`} />
@@ -46,7 +46,7 @@ function App() {
         <script src={`${baseUrl}js/bootstrap.bundle.min.js`} defer></script>
         <script src={`${baseUrl}js/dashboard.js`} defer></script>
         <script src={`${baseUrl}js/main.js`} defer></script>
-      </Helmet> */}
+      </Helmet>
       <RouteData userRole={userRole} token={token} />
     </Fragment>
   );
