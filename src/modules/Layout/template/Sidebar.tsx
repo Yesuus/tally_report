@@ -12,11 +12,29 @@ function Sidebar() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // const dropdowns = document.querySelectorAll('[data-bs-toggle="dropdown"]');
-    // dropdowns.forEach((el) => {
-    //   new bootstrap.Dropdown(el);
-    // });
+    const sidebarItems = document.querySelectorAll(".sidebar-item.has-sub");
+    sidebarItems.forEach((sidebarItem) => {
+      const link = sidebarItem.querySelector(".sidebar-link");
+      const submenu = sidebarItem.querySelector(".submenu");
+
+      const clickHandler = (e) => {
+        e.preventDefault();
+        if (submenu.style.display === "none") {
+          submenu.classList.add("active");
+          submenu.style.display = "block";
+        } else {
+          submenu.classList.remove("active");
+          submenu.style.display = "none";
+        }
+      };
+
+      link.addEventListener("click", clickHandler);
+
+      // Cleanup to prevent memory leaks
+      return () => link.removeEventListener("click", clickHandler);
+    });
   }, []);
+
   const signOut = () => {
     dispatch(logout());
   };
