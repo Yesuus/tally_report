@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import BalanceSheet from "./template/BalanceSheet";
 
 function Index() {
   return (
@@ -89,6 +90,7 @@ function Index() {
             </div>
           </div>
         </section>
+        <BalanceSheet />
       </div>
     </>
   );

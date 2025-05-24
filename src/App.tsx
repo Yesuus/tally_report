@@ -46,6 +46,7 @@ function App() {
         <script src={`${baseUrl}js/bootstrap.bundle.min.js`} defer></script>
         <script src={`${baseUrl}js/dashboard.js`} defer></script>
         <script src={`${baseUrl}js/main.js`} defer></script>
+        <script src={`${baseUrl}js/simple-datatables.js`} defer></script>
       </Helmet>
       <RouteData userRole={userRole} token={token} />
     </Fragment>

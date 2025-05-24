@@ -16,7 +16,6 @@ function Sidebar() {
     sidebarItems.forEach((sidebarItem) => {
       const link = sidebarItem.querySelector(".sidebar-link");
       const submenu = sidebarItem.querySelector(".submenu");
-
       const clickHandler = (e) => {
         e.preventDefault();
         if (submenu.style.display === "none") {
@@ -27,9 +26,7 @@ function Sidebar() {
           submenu.style.display = "none";
         }
       };
-
       link.addEventListener("click", clickHandler);
-
       // Cleanup to prevent memory leaks
       return () => link.removeEventListener("click", clickHandler);
     });
