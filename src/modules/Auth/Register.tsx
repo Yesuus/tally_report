@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { updateToken, updateUserRole } from "../store/storeSlice/projectSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Helmet } from "react-helmet";
 type loginForm = {
@@ -19,6 +18,9 @@ function Register() {
     userName: "",
     confirmPassword: "",
   });
+  useEffect(() => {
+    //
+  }, []);
   const handleFormData = (event) => {
     const { value, name } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -28,7 +30,6 @@ function Register() {
     // console.log("form Data", formData);
     // const token = JSON.stringify(formData);
     // localStorage.setItem("token", "login done");
-    // dispatch(updateToken(token));
     // dispatch(updateUserRole("admin"));
     navigate("/");
   };
