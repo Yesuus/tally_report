@@ -7,7 +7,8 @@ import PageNotFound from "./modules/NotFoundPage/index";
 import { useRoutes } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { useSelector, useDispatch } from "react-redux";
-import Dashboard from "./modules/Report/Index";
+import Dashboard from "./modules/Dashboard/Index";
+import NetworkAlert from "./utils/NetworkAlert";
 interface RouteDataProps {
   userRole: string;
   token: string;
@@ -46,8 +47,8 @@ function App() {
         <script src={`${baseUrl}js/bootstrap.bundle.min.js`} defer></script>
         <script src={`${baseUrl}js/dashboard.js`} defer></script>
         <script src={`${baseUrl}js/main.js`} defer></script>
-        <script src={`${baseUrl}js/simple-datatables.js`} defer></script>
       </Helmet>
+      <NetworkAlert />
       <RouteData userRole={userRole} token={token} />
     </Fragment>
   );

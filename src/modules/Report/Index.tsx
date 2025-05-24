@@ -11,7 +11,7 @@ function Index() {
         </a>
       </header>
       <div className="page-heading">
-        <h3>Welcome to Dashboard</h3>
+        <h3>Report</h3>
       </div>
       <div className="page-content">
         <section className="row">

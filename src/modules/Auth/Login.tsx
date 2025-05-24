@@ -4,6 +4,7 @@ import { login, logout } from "../store/storeSlice/authSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Helmet } from "react-helmet";
 import apiCall from "../../utils/api";
+import SweetAlert from "../../components/SweetAlert";
 type loginForm = {
   email: string;
   password: string;
@@ -28,9 +29,12 @@ function Login() {
       method: "GET",
     });
     const token = JSON.stringify(formData);
-    // localStorage.setItem("token", "login done");
+    SweetAlert({
+      title: "Login success",
+      message: "Welcome to Dashboard",
+      icon: "test",
+    });
     dispatch(login({ user: "admin", token: "tokensssfs3434" }));
-    // dispatch(updateUserRole("admin"));
     navigate("/");
   };
   return (
@@ -60,6 +64,7 @@ function Login() {
                   placeholder="Username"
                   value={formData.email}
                   onChange={handleFormData}
+                  required={true}
                 />
                 <div className="form-control-icon">
                   <i className="bi bi-person"></i>
@@ -73,6 +78,7 @@ function Login() {
                   placeholder="Password"
                   value={formData.password}
                   onChange={handleFormData}
+                  required={true}
                 />
                 <div className="form-control-icon">
                   <i className="bi bi-shield-lock"></i>
