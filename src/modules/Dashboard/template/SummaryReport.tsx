@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { DataTable } from "simple-datatables";
 import "simple-datatables/dist/style.css";
-const BalanceSheet = () => {
+const SummaryReport = () => {
   const tableRef = useRef(null);
   useEffect(() => {
     if (tableRef.current) {
@@ -15,7 +15,7 @@ const BalanceSheet = () => {
         <div className="page-title">
           <div className="row">
             <div className="col-12 col-md-6 order-md-1 order-last">
-              <h3>DataTable</h3>
+              <h3>Summary Report</h3>
               <p className="text-subtitle text-muted">
                 For user to check they list
               </p>
@@ -39,7 +39,7 @@ const BalanceSheet = () => {
         </div>
         <section className="section">
           <div className="card">
-            <div className="card-header">Simple Datatable</div>
+            <div className="card-header">Summary Report</div>
             <div className="card-body">
               <table ref={tableRef} className="table table-striped" id="table1">
                 <thead>
@@ -295,4 +295,4 @@ const BalanceSheet = () => {
     </>
   );
 };
-export default BalanceSheet;
+export default SummaryReport;

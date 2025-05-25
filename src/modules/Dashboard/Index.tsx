@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import BalanceSheet from "./template/BalanceSheet";
+import SummaryReport from "./template/SummaryReport";
 
 function Index() {
   return (
@@ -90,7 +90,7 @@ function Index() {
             </div>
           </div>
         </section>
-        <BalanceSheet />
+        <SummaryReport />
       </div>
     </>
   );
