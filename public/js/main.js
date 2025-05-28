@@ -82,13 +82,19 @@ window.addEventListener("resize", (event) => {
     document.getElementById("sidebar").classList.add("active");
   }
 });
-
-document.querySelector(".burger-btn").addEventListener("click", () => {
-  document.getElementById("sidebar").classList.toggle("active");
-});
-document.querySelector(".sidebar-hide").addEventListener("click", () => {
-  document.getElementById("sidebar").classList.toggle("active");
-});
+const burgerBtn = document.querySelector(".burger-btn");
+const sideBarHideBtn = document.querySelector(".sidebar-hide");
+const sidebar = document.getElementById("sidebar");
+if (burgerBtn && sidebar) {
+  burgerBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("active");
+  });
+}
+if (sideBarHideBtn && sidebar) {
+  sideBarHideBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("active");
+  });
+}
 
 // Perfect Scrollbar Init
 if (typeof PerfectScrollbar == "function") {

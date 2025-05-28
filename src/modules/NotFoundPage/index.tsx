@@ -13,7 +13,7 @@ export default function index() {
           <div className="col-md-8 col-12 offset-md-2">
             <img
               className="img-error"
-              src="/images/error-404.png"
+              src={`${baseUrl}images/error-404.png`}
               alt="Not Found"
             />
             <div className="text-center">
