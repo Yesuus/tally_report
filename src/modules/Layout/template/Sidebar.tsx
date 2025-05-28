@@ -1,14 +1,14 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { logout } from "../../store/storeSlice/authSlice";
 import { useEffect } from "react";
-
+// import type { RootState } from "../../store/store";
 function Sidebar() {
-  const baseUrl = import.meta.env.VITE_BASE_URL;
-  const title = useSelector((state) => state.projectRedux.title);
-  const token = useSelector((state) => state.projectRedux.token);
-  const userRole = useSelector((state) => state.auth.userRole);
-  const location = useLocation();
+  // const baseUrl = import.meta.env.VITE_BASE_URL;
+  // const title = useSelector((state:RootState) => state.projectRedux.title);
+  // const token = useSelector((state:RootState) => state.projectRedux.token);
+  // const userRole = useSelector((state:RootState) => state.auth.userRole);
+  // const location = useLocation();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,19 +16,30 @@ function Sidebar() {
     sidebarItems.forEach((sidebarItem) => {
       const link = sidebarItem.querySelector(".sidebar-link");
       const submenu = sidebarItem.querySelector(".submenu");
-      const clickHandler = (e) => {
+      const clickHandler = (e: MouseEvent): void => {
         e.preventDefault();
-        if (submenu.style.display === "none") {
-          submenu.classList.add("active");
-          submenu.style.display = "block";
-        } else {
-          submenu.classList.remove("active");
-          submenu.style.display = "none";
+        if (submenu) {
+          const submenuElement = submenu as HTMLElement;
+          if (submenuElement.style.display === "none") {
+            submenuElement.classList.add("active");
+            submenuElement.style.display = "block";
+          } else {
+            submenuElement.classList.remove("active");
+            submenuElement.style.display = "none";
+          }
         }
       };
-      link.addEventListener("click", clickHandler);
+      if (link) {
+        const linkElement = link as HTMLElement;
+        linkElement.addEventListener("click", clickHandler);
+      }
       // Cleanup to prevent memory leaks
-      return () => link.removeEventListener("click", clickHandler);
+      return () => {
+        if (link) {
+          const linkElement = link as HTMLElement;
+          linkElement.removeEventListener("click", clickHandler);
+        }
+      };
     });
   }, []);
 

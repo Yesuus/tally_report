@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { Helmet } from "react-helmet";
 type loginForm = {
   email: string;
@@ -10,7 +10,7 @@ type loginForm = {
 };
 function Register() {
   const baseUrl = import.meta.env.VITE_BASE_URL;
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formData, setFormData] = useState<loginForm>({
     email: "",
@@ -21,11 +21,11 @@ function Register() {
   useEffect(() => {
     //
   }, []);
-  const handleFormData = (event) => {
+  const handleFormData = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     // console.log("form Data", formData);
     // const token = JSON.stringify(formData);
@@ -104,7 +104,10 @@ function Register() {
                   <i className="bi bi-shield-lock"></i>
                 </div>
               </div>
-              <button className="btn btn-primary btn-block btn-lg shadow-lg mt-5">
+              <button
+                type="submit"
+                className="btn btn-primary btn-block btn-lg shadow-lg mt-5"
+              >
                 Log in
               </button>
             </form>

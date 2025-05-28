@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const NetworkAlert = () => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
@@ -10,7 +10,7 @@ const NetworkAlert = () => {
 
     const handleOffline = () => {
       setIsOnline(false);
-      alert("You are offline. Please check your internet connection.");
+      alert("You are offline. Please check your internet connection."+isOnline);
     };
 
     window.addEventListener("online", handleOnline);

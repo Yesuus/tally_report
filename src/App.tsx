@@ -1,19 +1,19 @@
-import { Fragment, useState } from "react";
-import React from "react";
+import { Fragment } from "react";
 import Login from "./modules/Auth/Login";
 import Register from "./modules/Auth/Register";
 import Layout from "./modules/Layout/Index";
 import PageNotFound from "./modules/NotFoundPage/index";
 import { useRoutes } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Dashboard from "./modules/Dashboard/Index";
 import NetworkAlert from "./utils/NetworkAlert";
+import type { RootState } from "./modules/store/store";
 interface RouteDataProps {
   userRole: string;
   token: string;
 }
-function RouteData({ userRole, token }: RouteDataProps) {
+function RouteData({ token }: RouteDataProps) {
   const elements = useRoutes([
     {
       path: "/",
@@ -32,8 +32,8 @@ function RouteData({ userRole, token }: RouteDataProps) {
 }
 function App() {
   const baseUrl = import.meta.env.VITE_BASE_URL;
-  const token = useSelector((state) => state.auth.token);
-  const userRole = useSelector((state) => state.auth.userRole);
+  const token = useSelector((state: RootState) => state.auth.token);
+  const userRole = useSelector((state: RootState) => state.auth.userRole);
   return (
     <Fragment>
       <Helmet>
@@ -49,7 +49,7 @@ function App() {
         <script src={`${baseUrl}js/main.js`} defer></script>
       </Helmet>
       <NetworkAlert />
-      <RouteData userRole={userRole} token={token} />
+      <RouteData userRole={userRole ?? ""} token={token ?? ""} />
     </Fragment>
   );
 }

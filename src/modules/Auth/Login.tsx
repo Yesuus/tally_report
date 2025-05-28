@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { login, logout } from "../store/storeSlice/authSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { login } from "../store/storeSlice/authSlice";
+import { useDispatch } from "react-redux";
 import { Helmet } from "react-helmet";
-import apiCall from "../../utils/api";
+// import apiCall from "../../utils/api";
 import SweetAlert from "../../components/SweetAlert";
 type loginForm = {
   email: string;
@@ -11,30 +11,30 @@ type loginForm = {
 };
 function Login() {
   const baseUrl = import.meta.env.VITE_BASE_URL;
-  const apiUrl = import.meta.env.VITE_API_URL;
+  // const apiUrl = import.meta.env.VITE_API_URL;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formData, setFormData] = useState<loginForm>({
     email: "",
     password: "",
   });
-  const handleFormData = (event) => {
+  const handleFormData = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const { data, error } = await apiCall<formData[]>({
-      url: `${apiUrl}`,
-      method: "GET",
-    });
-    const token = JSON.stringify(formData);
+    // const { data, error } = await apiCall<formData[]>({
+    //   url: `${apiUrl}`,
+    //   method: "GET",
+    // });
+    //const token = JSON.stringify(formData);
     SweetAlert({
       title: "Login success",
       message: "Welcome to Dashboard",
       icon: "test",
     });
-    dispatch(login({ user: "admin", token: "tokensssfs3434" }));
+    dispatch(login({ user: [], token: "tokensssfs3434", userRole: "admin" }));
     navigate("/");
   };
   return (

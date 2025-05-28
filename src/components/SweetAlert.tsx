@@ -1,4 +1,3 @@
-import React from "react";
 import Swal from "sweetalert2";
 type alertData = {
   title: string;
@@ -12,7 +11,12 @@ const SweetAlert = (params: alertData) => {
   Swal.fire({
     title: title || "Alert",
     text: message || "This is a message",
-    icon: icon || "info",
+    icon: (icon || "info") as
+      | "success"
+      | "error"
+      | "warning"
+      | "info"
+      | "question",
     confirmButtonText: buttonText || "OK",
   });
   //   };

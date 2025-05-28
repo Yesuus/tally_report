@@ -3,15 +3,15 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface AuthState {
-  user: Array | null;
-  userRole: string | null;
-  token: string | null;
+  user: Array<string>;
+  userRole: string;
+  token: string;
 }
 
 const initialState: AuthState = {
-  user: null,
-  token: null,
-  userRole: null,
+  user: [],
+  token: '',
+  userRole: '',
 };
 
 const authSlice = createSlice({
@@ -19,14 +19,14 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     login(state, action: PayloadAction<AuthState>) {
-      state.user = action.payload;
-      state.userRole = action.payload.user;
+      state.user = action.payload.user;
+      state.userRole = action.payload.user[0]??"";
       state.token = action.payload.token;
     },
     logout(state) {
-      state.user = null;
-      state.token = null;
-      state.userRole = null;
+      state.user = [];
+      state.token = "";
+      state.userRole = "";
     },
   },
 });
